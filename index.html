@@ -107,10 +107,19 @@ chapters.forEach((ch,i)=>{
  const b=document.createElement('button');
  b.className='chapter';
  b.innerHTML='<span class="number">'+String(i+1).padStart(2,'0')+'</span><span><strong>'+ch[1]+'</strong><span class="muted">'+ch[0]+'</span></span>';
- b.onclick=()=>{selectChapter(i);document.getElementById('reader').scrollIntoView({behavior:'smooth'})};
+ b.onclick = () => {
+  selectChapter(i);
+
+  const reader = document.getElementById('reader');
+
+  if (reader) {
+    reader.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+};
  grid.appendChild(b);
 });
-selectChapter(0);
+console.log(chapters[0]);
+console.log(document.getElementById('storytext'));
 </script>
 </body>
 </html>
